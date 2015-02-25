@@ -349,3 +349,109 @@ footer p + p {
     content: 'at http://github.com/';
   }
 }
+
+.navbar {
+    clear: both;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    width: 600px;
+    height: 40px;
+}
+
+.navbar li {
+   float:left;
+   position: relative;
+   z-index: 2;
+   width: 140px;
+}
+
+.navbar>li {
+    width: auto;
+}
+
+.navbar>li>ul>li {
+    width: auto;
+}
+
+.navbar>li>ul>li>ul>li {
+    width: auto;
+}
+
+.navbar a {
+    padding: 11px 10px 12px;
+    color: #666;
+    text-decoration: none;
+    height: 17px;
+    display: block;
+}
+
+
+.navbar ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: none;
+    position: absolute;
+    top: 40px;
+    left: 0px;
+    z-index: 3;
+}
+.navbar ul a {
+    padding: 5px 0 5px 5px;
+    height: auto;
+    display: block;
+    width: 14em;
+}
+.navbar ul li:hover {
+    background-color: #a7cddc;
+}
+
+.navbar ul li:hover a {
+    color: #000;
+}
+
+.navbar li:hover ul ul {
+    display: none;
+}
+
+.navbar li:hover ul, .navbar li li:hover ul {
+    display: block;
+}
+
+
+ul.navbar,
+ul.navbar a {
+    background: #00A2E3;
+    color: white;
+}
+
+ul.navbar a:hover,
+ul.navbar a:active,
+ul.navbar>li.active>a {
+    background: #22BBFF;
+}
+
+ul.navbar.book,
+ul.navbar.book a {
+    background: #354E94;
+}
+
+ul.navbar.book a:hover,
+ul.navbar.book a:active,
+ul.navbar.book>li.active>a {
+    background: #5566BB;
+}
+
+ul.navbar.journal,
+ul.navbar.journal a {
+    background: #FDE43C;
+    color: #666666;
+}
+
+ul.navbar.journal a:hover,
+ul.navbar.journal a:active,
+ul.navbar.journal>li.active>a {
+    background: #FDF7C3;
+}
+
