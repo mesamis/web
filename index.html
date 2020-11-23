@@ -125,6 +125,44 @@ body {
   padding-top: 60px;
 }
 
+.mySlides1, .mySlides2 {display: none}
+img {vertical-align: middle;}
+
+/* Slideshow container */
+.slideshow-container {
+  max-width: 1000px;
+  position: relative;
+  margin: auto;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a grey background color */
+.prev:hover, .next:hover {
+  background-color: #f1f1f1;
+  color: black;
+}
+
   </style>
   
 
@@ -138,11 +176,11 @@ body {
    </div>
 
     <div id="navbar">
-		<a  href="#onas">O nás</a>
-		<a  href="#nasesluzby">Služby</a>
-		<a  href="#galerie">Galerie</a>
-		<a  href="#cenik">Ceník</a>
-		<a  href="#kontakt">Kontakt</a>
+		<a href="#onas">O nás</a>
+		<a href="#nasesluzby">Služby</a>
+		<a href="#galerie">Galerie</a>
+		<a href="#cenik">Ceník</a>
+		<a href="#kontakt">Kontakt</a>
     </div>
 	  
 	 
@@ -208,6 +246,7 @@ Praha a Středočeský kraj
 		
 		<h2 id="galerie">Galerie</h2>
 
+<div class="slideshow-container">
 
 <div class="mySlides fade">
 	<!-- <div class="numbertext">1 / 3</div> -->
@@ -265,25 +304,28 @@ Praha a Středočeský kraj
   <img src="big/IMG_0020.JPG" style="width:100%">
 </div>
 
+  <a class="prev" onclick="prevSlide()">&#10094;</a>
+  <a class="next" onclick="nextSlide()">&#10095;</a>
+
 </div>
 <br>
 
 <div style="text-align:center">
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
-  <span class="dot"></span> 
+  <a onclick="showSlide(0)"><span class="dot"></span></a> 
+  <a onclick="showSlide(1)"><span class="dot"></span></a> 
+  <a onclick="showSlide(2)"><span class="dot"></span></a> 
+  <a onclick="showSlide(3)"><span class="dot"></span></a> 
+  <a onclick="showSlide(4)"><span class="dot"></span></a> 
+  <a onclick="showSlide(5)"><span class="dot"></span></a> 
+  <a onclick="showSlide(6)"><span class="dot"></span></a> 
+  <a onclick="showSlide(7)"><span class="dot"></span></a> 
+  <a onclick="showSlide(8)"><span class="dot"></span></a> 
+  <a onclick="showSlide(9)"><span class="dot"></span></a> 
+  <a onclick="showSlide(10)"><span class="dot"></span></a> 
+  <a onclick="showSlide(11)"><span class="dot"></span></a> 
+  <a onclick="showSlide(12)"><span class="dot"></span></a> 
+  <a onclick="showSlide(13)"><span class="dot"></span></a> 
+  <a onclick="showSlide(14)"><span class="dot"></span></a> 
 </div>
     </div>
     <script>
@@ -302,23 +344,36 @@ function myFunction() {
 }
 
 var slideIndex = 0;
-showSlides();
+showSlide(0);
 
-function showSlides() {
+var myTimeout;
+
+function nextSlide() {
+   showSlide(slideIndex+1);
+}
+
+function prevSlide() {
+   showSlide(slideIndex-1);
+}
+
+function showSlide(idx){
   var i;
   var slides = document.getElementsByClassName("mySlides");
   var dots = document.getElementsByClassName("dot");
+  clearTimeout(myTimeout);
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";  
   }
-  slideIndex++;
-  if (slideIndex > slides.length) {slideIndex = 1}    
+  	
+  slideIndex=idx % slides.length;
+  if (slideIndex<0) slideIndex += slides.length;
+
   for (i = 0; i < dots.length; i++) {
     dots[i].className = dots[i].className.replace(" active", "");
   }
-  slides[slideIndex-1].style.display = "block";  
-  dots[slideIndex-1].className += " active";
-  setTimeout(showSlides, 2000); // Change image every 2 seconds
+  slides[slideIndex].style.display = "block";  
+  dots[slideIndex].className += " active";
+  myTimeout = setTimeout(nextSlide, 10000); // Change image every 10 seconds
 }
 
 </script>
